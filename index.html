@@ -1,84 +1,903 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniel Glownia - AI & Data Science</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Daniel Glownia — ML Engineer · Bioinformatics Scientist · Deep Learning Nerd</title>
+    <meta name="description"
+        content="Daniel Glownia is a Data Scientist in San Diego specializing in bioinformatics, urban analytics, and deep learning on large healthcare datasets.">
+    <meta property="og:title" content="Daniel Glownia — ML Engineer & Bioinformatics Scientist">
+    <meta property="og:description"
+        content="Data Scientist in San Diego specializing in bioinformatics, urban analytics, and deep learning.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
+        /* ========================================
+           DESIGN TOKENS
+           ======================================== */
         :root {
-            --primary-color: #007bff;
-            --secondary-color: #03dac6;
-            --background-color: #f5f5f5;
-            --text-color: #212121;
-            --card-background: #ffffff;
-            --shadow-color: rgba(0, 0, 0, 0.2);
+            --bg-primary: #0b0b14;
+            --bg-secondary: #111122;
+            --bg-surface: rgba(255, 255, 255, 0.04);
+            --bg-surface-hover: rgba(255, 255, 255, 0.08);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(255, 171, 64, 0.3);
+
+            --accent-amber: #ffab40;
+            --accent-amber-light: #ffd180;
+            --accent-cyan: #00e5ff;
+            --accent-magenta: #e040fb;
+
+            --text-primary: #f0f0f5;
+            --text-secondary: rgba(240, 240, 245, 0.65);
+            --text-tertiary: rgba(240, 240, 245, 0.4);
+
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+
+            --max-width: 900px;
+            --section-gap: 100px;
         }
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
+
+        /* ========================================
+           RESET & BASE
+           ======================================== */
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ========================================
+           ANIMATED BACKGROUND
+           ======================================== */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 10%, rgba(255, 171, 64, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 80% 30%, rgba(0, 229, 255, 0.04) 0%, transparent 55%),
+                radial-gradient(ellipse 70% 60% at 50% 90%, rgba(224, 64, 251, 0.04) 0%, transparent 55%);
+            animation: bgShift 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgShift {
+            0% {
+                transform: scale(1) translate(0, 0);
+            }
+
+            50% {
+                transform: scale(1.1) translate(-2%, 3%);
+            }
+
+            100% {
+                transform: scale(1) translate(2%, -2%);
+            }
+        }
+
+        /* Dot grid overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 28px 28px;
+            pointer-events: none;
+        }
+
+        /* ========================================
+           LAYOUT
+           ======================================== */
+        main {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: var(--section-gap) 0;
+        }
+
+        /* ========================================
+           NAV
+           ======================================== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 24px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
+            gap: 24px;
+            background: rgba(11, 11, 20, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            transition: all 0.3s ease;
         }
-        .container {
-            max-width: 600px;
-            background: var(--card-background);
-            padding: 24px;
-            border-radius: 8px;
-            box-shadow: 0px 4px 6px var(--shadow-color);
-            text-align: center;
-        }
-        h1 {
-            font-weight: 500;
-            font-size: 2rem;
-            margin-bottom: 16px;
-        }
-        p {
-            font-size: 1rem;
-            color: #666;
-            margin-bottom: 16px;
-        }
-        .links {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-        }
-        .links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
+
+        nav a {
+            color: var(--text-secondary);
             text-decoration: none;
-            color: #fff;
-            background: var(--primary-color);
-            border-radius: 50%;
-            font-size: 1.5rem;
-            transition: background 0.3s ease;
-            box-shadow: 0px 2px 4px var(--shadow-color);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            transition: color 0.3s ease;
+            position: relative;
         }
-        .links a:hover {
-            background: #0056b3;
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-amber);
+            border-radius: 1px;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-amber);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ========================================
+           HERO / INTRO
+           ======================================== */
+        #intro {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .hero-greeting {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--accent-amber) 0%, var(--accent-amber-light) 40%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: gradientShimmer 6s ease-in-out infinite;
+        }
+
+        @keyframes gradientShimmer {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .hero-tagline {
+            font-family: var(--font-mono);
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            color: var(--text-secondary);
+            margin-bottom: 36px;
+            letter-spacing: 0.04em;
+        }
+
+        .hero-tagline span {
+            color: var(--accent-amber);
+        }
+
+        .hero-bio {
+            max-width: 680px;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+
+        .hero-bio strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .hero-bio .highlight {
+            color: var(--accent-amber);
+            font-weight: 500;
+        }
+
+        /* DNA Helix decoration */
+        .dna-decoration {
+            position: absolute;
+            right: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        /* ========================================
+           SECTION HEADERS
+           ======================================== */
+        .section-header {
+            margin-bottom: 48px;
+        }
+
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent-amber);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--accent-amber);
+            border-radius: 1px;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+
+        /* ========================================
+           LINKS SECTION
+           ======================================== */
+        .links-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .link-card {
+            flex: 1;
+            min-width: 240px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 24px 28px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 171, 64, 0.08), rgba(0, 229, 255, 0.05));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .link-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(255, 171, 64, 0.1);
+        }
+
+        .link-card:hover::before {
+            opacity: 1;
+        }
+
+        .link-card-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .link-card-icon.github {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-primary);
+        }
+
+        .link-card-icon.huggingface {
+            background: rgba(255, 171, 64, 0.12);
+            color: var(--accent-amber);
+        }
+
+        .link-card-icon.linkedin {
+            background: rgba(0, 119, 181, 0.15);
+            color: #0a97d9;
+        }
+
+        .link-card-info {
+            position: relative;
+            z-index: 1;
+        }
+
+        .link-card-name {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 2px;
+        }
+
+        .link-card-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .link-card-arrow {
+            margin-left: auto;
+            font-size: 1.1rem;
+            color: var(--text-tertiary);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .link-card:hover .link-card-arrow {
+            color: var(--accent-amber);
+            transform: translateX(4px);
+        }
+
+        /* ========================================
+           PLACEHOLDER CARDS (Agents & Prompts)
+           ======================================== */
+        .placeholder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .placeholder-card {
+            padding: 40px 24px;
+            border: 1.5px dashed rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            background: var(--bg-surface);
+        }
+
+        .placeholder-card:hover {
+            border-color: rgba(255, 171, 64, 0.2);
+            background: var(--bg-surface-hover);
+        }
+
+        .placeholder-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 171, 64, 0.08);
+            color: var(--accent-amber);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        .placeholder-text {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            font-family: var(--font-mono);
+        }
+
+        /* Prompts have code-snippet style */
+        .placeholder-card.prompt-style {
+            align-items: flex-start;
+            text-align: left;
+            padding: 28px;
+        }
+
+        .prompt-skeleton {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .prompt-skeleton-line {
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .prompt-skeleton-line:nth-child(1) {
+            width: 70%;
+        }
+
+        .prompt-skeleton-line:nth-child(2) {
+            width: 100%;
+        }
+
+        .prompt-skeleton-line:nth-child(3) {
+            width: 45%;
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        footer {
+            text-align: center;
+            padding: 60px 24px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
+        }
+
+        .footer-text .heart {
+            display: inline-block;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(1.15);
+            }
+
+            50% {
+                transform: scale(1);
+            }
+
+            75% {
+                transform: scale(1.1);
+            }
+        }
+
+        .footer-year {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+            margin-top: 8px;
+        }
+
+        /* ========================================
+           SCROLL ANIMATIONS
+           ======================================== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .fade-in-delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .fade-in-delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .fade-in-delay-4 {
+            transition-delay: 0.4s;
+        }
+
+        /* Hero special: always visible but stagger children */
+        .hero-stagger>* {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: heroFadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        .hero-stagger>*:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .hero-stagger>*:nth-child(2) {
+            animation-delay: 0.25s;
+        }
+
+        .hero-stagger>*:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes heroFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+        @media (max-width: 768px) {
+            :root {
+                --section-gap: 70px;
+            }
+
+            main {
+                padding: 0 18px;
+            }
+
+            nav {
+                gap: 16px;
+                padding: 14px 18px;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+
+            .links-grid {
+                flex-direction: column;
+            }
+
+            .link-card {
+                min-width: unset;
+            }
+
+            .placeholder-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dna-decoration {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-greeting {
+                font-size: 2.2rem;
+            }
+
+            .hero-bio {
+                font-size: 0.95rem;
+            }
+
+            .link-card {
+                padding: 18px 20px;
+            }
+        }
+
+        /* ========================================
+           SELECTION STYLE
+           ======================================== */
+        ::selection {
+            background: rgba(255, 171, 64, 0.3);
+            color: var(--text-primary);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Welcome to My AI & Data Science Space! 🚀</h1>
-        <p>I'm Daniel Glownia, a passionate Data Scientist and Software Engineer. I love working with large-scale data, bioinformatics, and machine learning models.</p>
-        <p>Check out my work on:</p>
-        <div class="links">
-            <a href="https://github.com/danielglownia" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://huggingface.co/dglownia" target="_blank"><i class="fas fa-robot"></i></a>
-        </div>
-        <p>Let's build something amazing together! ✨</p>
-    </div>
+
+    <!-- ====== NAV ====== -->
+    <nav id="main-nav" aria-label="Main navigation">
+        <a href="#intro">Intro</a>
+        <a href="#links">Links</a>
+        <a href="#agents">Agents</a>
+        <a href="#prompts">Prompts</a>
+    </nav>
+
+    <main>
+
+        <!-- ====== HERO / INTRO ====== -->
+        <section id="intro" aria-label="Introduction">
+            <div class="hero-stagger">
+                <h1 class="hero-greeting">Hey, I'm Daniel</h1>
+                <p class="hero-tagline">
+                    <span>Technical Leader</span> · ML Engineer · Bioinformatics Scientist
+                </p>
+                <p class="hero-bio">
+                    I'm a <strong>machine learning engineer</strong> and technical leader with a
+                    passion for driving AI strategy from research through production.
+                    With a BS in Computer Science from <strong>DePaul University</strong> and an
+                    MS in Data Science from the <strong>University of Chicago</strong>, I specialize in
+                    designing and scaling <span class="highlight">deep learning systems</span> for
+                    large-scale bioinformatics problems.
+                    I'm focused on building high-impact AI teams and translating cutting-edge
+                    research into real-world solutions.
+                </p>
+            </div>
+
+            <!-- DNA Helix SVG Decoration -->
+            <svg class="dna-decoration" width="80" height="500" viewBox="0 0 80 500" fill="none"
+                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M20 0 Q60 50 20 100 Q-20 150 20 200 Q60 250 20 300 Q-20 350 20 400 Q60 450 20 500"
+                    stroke="url(#dnaGrad1)" stroke-width="1.5" fill="none" opacity="0.6" />
+                <path d="M60 0 Q20 50 60 100 Q100 150 60 200 Q20 250 60 300 Q100 350 60 400 Q20 450 60 500"
+                    stroke="url(#dnaGrad2)" stroke-width="1.5" fill="none" opacity="0.6" />
+                <!-- Rungs -->
+                <line x1="25" y1="50" x2="55" y2="50" stroke="rgba(255,171,64,0.15)" stroke-width="1" />
+                <line x1="15" y1="100" x2="65" y2="100" stroke="rgba(0,229,255,0.12)" stroke-width="1" />
+                <line x1="25" y1="150" x2="55" y2="150" stroke="rgba(255,171,64,0.15)" stroke-width="1" />
+                <line x1="15" y1="200" x2="65" y2="200" stroke="rgba(0,229,255,0.12)" stroke-width="1" />
+                <line x1="25" y1="250" x2="55" y2="250" stroke="rgba(255,171,64,0.15)" stroke-width="1" />
+                <line x1="15" y1="300" x2="65" y2="300" stroke="rgba(0,229,255,0.12)" stroke-width="1" />
+                <line x1="25" y1="350" x2="55" y2="350" stroke="rgba(255,171,64,0.15)" stroke-width="1" />
+                <line x1="15" y1="400" x2="65" y2="400" stroke="rgba(0,229,255,0.12)" stroke-width="1" />
+                <line x1="25" y1="450" x2="55" y2="450" stroke="rgba(255,171,64,0.15)" stroke-width="1" />
+                <!-- Nucleotide dots -->
+                <circle cx="20" cy="50" r="3" fill="rgba(255,171,64,0.25)" />
+                <circle cx="60" cy="50" r="3" fill="rgba(0,229,255,0.2)" />
+                <circle cx="20" cy="150" r="3" fill="rgba(255,171,64,0.25)" />
+                <circle cx="60" cy="150" r="3" fill="rgba(0,229,255,0.2)" />
+                <circle cx="20" cy="250" r="3" fill="rgba(255,171,64,0.25)" />
+                <circle cx="60" cy="250" r="3" fill="rgba(0,229,255,0.2)" />
+                <circle cx="20" cy="350" r="3" fill="rgba(255,171,64,0.25)" />
+                <circle cx="60" cy="350" r="3" fill="rgba(0,229,255,0.2)" />
+                <circle cx="20" cy="450" r="3" fill="rgba(255,171,64,0.25)" />
+                <circle cx="60" cy="450" r="3" fill="rgba(0,229,255,0.2)" />
+                <defs>
+                    <linearGradient id="dnaGrad1" x1="0" y1="0" x2="0" y2="500" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#ffab40" />
+                        <stop offset="100%" stop-color="#00e5ff" />
+                    </linearGradient>
+                    <linearGradient id="dnaGrad2" x1="0" y1="0" x2="0" y2="500" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#00e5ff" />
+                        <stop offset="100%" stop-color="#e040fb" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </section>
+
+        <!-- ====== LINKS ====== -->
+        <section id="links" aria-label="Links">
+            <div class="section-header fade-in">
+                <p class="section-label">Connect</p>
+                <h2 class="section-title">Find me online</h2>
+                <p class="section-subtitle">Check out my work, models, and open-source projects.</p>
+            </div>
+
+            <div class="links-grid">
+                <a href="https://github.com/danielglownia" target="_blank" rel="noopener noreferrer"
+                    class="link-card fade-in fade-in-delay-1" id="link-github" aria-label="GitHub profile">
+                    <div class="link-card-icon github">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="link-card-info">
+                        <div class="link-card-name">GitHub</div>
+                        <div class="link-card-desc">Code, repos & contributions</div>
+                    </div>
+                    <div class="link-card-arrow"><i class="fas fa-arrow-right"></i></div>
+                </a>
+
+                <a href="https://huggingface.co/dglownia" target="_blank" rel="noopener noreferrer"
+                    class="link-card fade-in fade-in-delay-2" id="link-huggingface" aria-label="Hugging Face profile">
+                    <div class="link-card-icon huggingface">
+                        🤗
+                    </div>
+                    <div class="link-card-info">
+                        <div class="link-card-name">Hugging Face</div>
+                        <div class="link-card-desc">Models & datasets</div>
+                    </div>
+                    <div class="link-card-arrow"><i class="fas fa-arrow-right"></i></div>
+                </a>
+
+                <a href="https://www.linkedin.com/in/daniel-glownia/" target="_blank" rel="noopener noreferrer"
+                    class="link-card fade-in fade-in-delay-3" id="link-linkedin" aria-label="LinkedIn profile">
+                    <div class="link-card-icon linkedin">
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    <div class="link-card-info">
+                        <div class="link-card-name">LinkedIn</div>
+                        <div class="link-card-desc">Connect with me</div>
+                    </div>
+                    <div class="link-card-arrow"><i class="fas fa-arrow-right"></i></div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ====== AGENTS ====== -->
+        <section id="agents" aria-label="AI Agents">
+            <div class="section-header fade-in">
+                <p class="section-label">Build</p>
+                <h2 class="section-title">Agents</h2>
+                <p class="section-subtitle">AI agents I've built — coming soon.</p>
+            </div>
+
+            <div class="placeholder-grid">
+                <div class="placeholder-card fade-in fade-in-delay-1">
+                    <div class="placeholder-icon"><i class="fas fa-plus"></i></div>
+                    <span class="placeholder-text">agent_01</span>
+                </div>
+                <div class="placeholder-card fade-in fade-in-delay-2">
+                    <div class="placeholder-icon"><i class="fas fa-plus"></i></div>
+                    <span class="placeholder-text">agent_02</span>
+                </div>
+                <div class="placeholder-card fade-in fade-in-delay-3">
+                    <div class="placeholder-icon"><i class="fas fa-plus"></i></div>
+                    <span class="placeholder-text">agent_03</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== PROMPTS ====== -->
+        <section id="prompts" aria-label="Prompts">
+            <div class="section-header fade-in">
+                <p class="section-label">Craft</p>
+                <h2 class="section-title">Prompts</h2>
+                <p class="section-subtitle">My favorite and most useful prompts — coming soon.</p>
+            </div>
+
+            <div class="placeholder-grid">
+                <div class="placeholder-card prompt-style fade-in fade-in-delay-1">
+                    <div class="placeholder-icon" style="margin-bottom: 8px;"><i class="fas fa-terminal"></i></div>
+                    <div class="prompt-skeleton">
+                        <div class="prompt-skeleton-line"></div>
+                        <div class="prompt-skeleton-line"></div>
+                        <div class="prompt-skeleton-line"></div>
+                    </div>
+                    <span class="placeholder-text" style="margin-top: 12px;">prompt_01</span>
+                </div>
+                <div class="placeholder-card prompt-style fade-in fade-in-delay-2">
+                    <div class="placeholder-icon" style="margin-bottom: 8px;"><i class="fas fa-terminal"></i></div>
+                    <div class="prompt-skeleton">
+                        <div class="prompt-skeleton-line"></div>
+                        <div class="prompt-skeleton-line"></div>
+                        <div class="prompt-skeleton-line"></div>
+                    </div>
+                    <span class="placeholder-text" style="margin-top: 12px;">prompt_02</span>
+                </div>
+                <div class="placeholder-card prompt-style fade-in fade-in-delay-3">
+                    <div class="placeholder-icon" style="margin-bottom: 8px;"><i class="fas fa-terminal"></i></div>
+                    <div class="prompt-skeleton">
+                        <div class="prompt-skeleton-line"></div>
+                        <div class="prompt-skeleton-line"></div>
+                        <div class="prompt-skeleton-line"></div>
+                    </div>
+                    <span class="placeholder-text" style="margin-top: 12px;">prompt_03</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ====== FOOTER ====== -->
+    <footer>
+        <p class="footer-text">Built with <span class="heart">☕</span> and curiosity</p>
+        <p class="footer-year" id="footer-year"></p>
+    </footer>
+
+    <!-- ====== SCRIPTS ====== -->
+    <script>
+        // Footer year
+        document.getElementById('footer-year').textContent = '© ' + new Date().getFullYear() + ' Daniel Glownia';
+
+        // Scroll-triggered fade-in animations
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            },
+            {
+                threshold: 0.15,
+                rootMargin: '0px 0px -40px 0px',
+            }
+        );
+
+        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+        // Active nav link highlighting on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a');
+
+        const navObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach((link) => {
+                            link.style.color = '';
+                            if (link.getAttribute('href') === '#' + entry.target.id) {
+                                link.style.color = 'var(--accent-amber)';
+                            }
+                        });
+                    }
+                });
+            },
+            {
+                threshold: 0.3,
+                rootMargin: '-80px 0px -50% 0px',
+            }
+        );
+
+        sections.forEach((sec) => navObserver.observe(sec));
+    </script>
+
 </body>
+
 </html>
