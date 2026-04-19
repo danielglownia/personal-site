@@ -1,3 +1,10 @@
+<!--
+  © 2026 Daniel Glownia — www.glownia.ai
+  All prompts and original content on this site are the intellectual
+  property of Daniel Glownia. You may reference or share this work
+  with proper attribution. Unauthorized reproduction without credit
+  is prohibited.
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -732,6 +739,79 @@
             margin-top: 8px;
         }
 
+        .footer-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-citation {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-citation-text {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-tertiary);
+            opacity: 0.6;
+        }
+
+        .footer-citation-btn {
+            padding: 3px 10px;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: transparent;
+            color: var(--text-tertiary);
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            opacity: 0.6;
+        }
+
+        .footer-citation-btn:hover {
+            border-color: var(--accent-amber);
+            color: var(--accent-amber);
+            opacity: 1;
+        }
+
+        .footer-citation-btn.copied {
+            border-color: #4caf50;
+            color: #4caf50;
+            opacity: 1;
+        }
+
+        .footer-divider {
+            width: 1px;
+            height: 14px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-coffee {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-tertiary);
+            text-decoration: none;
+            opacity: 0.6;
+            transition: all 0.2s ease;
+        }
+
+        .footer-coffee:hover {
+            color: var(--accent-amber);
+            opacity: 1;
+        }
+
         /* ========================================
            SCROLL ANIMATIONS
            ======================================== */
@@ -1276,6 +1356,18 @@
     <footer>
         <p class="footer-text">Built with <span class="heart">☕</span> and curiosity</p>
         <p class="footer-year" id="footer-year"></p>
+        <div class="footer-meta">
+            <div class="footer-citation">
+                <span class="footer-citation-text" id="citation-text">Glownia, D. (2026). ML Prompt Templates. https://www.glownia.ai</span>
+                <button class="footer-citation-btn" onclick="copyCitation()" aria-label="Copy citation">
+                    <i class="fas fa-copy"></i> Cite
+                </button>
+            </div>
+            <div class="footer-divider"></div>
+            <a href="https://ko-fi.com/danielglownia" target="_blank" rel="noopener noreferrer" class="footer-coffee" aria-label="Support on Ko-fi">
+                ☕ Buy me a coffee
+            </a>
+        </div>
     </footer>
 
     <!-- ====== SCRIPTS ====== -->
@@ -1343,6 +1435,20 @@
                 setTimeout(() => {
                     btnEl.classList.remove('copied');
                     btnEl.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                }, 2000);
+            });
+        }
+
+        // Copy citation to clipboard
+        function copyCitation() {
+            const text = document.getElementById('citation-text').textContent;
+            const btn = document.querySelector('.footer-citation-btn');
+            navigator.clipboard.writeText(text).then(() => {
+                btn.classList.add('copied');
+                btn.innerHTML = '<i class="fas fa-check"></i> Copied';
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = '<i class="fas fa-copy"></i> Cite';
                 }, 2000);
             });
         }
