@@ -1045,11 +1045,11 @@
 
                             <h4># Context</h4>
                             <ul>
-                                <li><strong>Project/Objective:</strong> <span class="prompt-placeholder-text">[e.g., Predicting which aging homes are viable renovation investments]</span></li>
-                                <li><strong>Positive Class (1):</strong> <span class="prompt-placeholder-text">[e.g., Viable investment]</span></li>
-                                <li><strong>Negative Class (0):</strong> <span class="prompt-placeholder-text">[e.g., Not viable]</span></li>
+                                <li><strong>Project/Objective:</strong> <span class="prompt-placeholder-text">[e.g., Predicting customer churn for a SaaS platform]</span></li>
+                                <li><strong>Positive Class (1):</strong> <span class="prompt-placeholder-text">[e.g., Churned]</span></li>
+                                <li><strong>Negative Class (0):</strong> <span class="prompt-placeholder-text">[e.g., Retained]</span></li>
                                 <li><strong>Class Imbalance:</strong> <span class="prompt-placeholder-text">[e.g., Highly imbalanced, 90% Negative / 10% Positive]</span></li>
-                                <li><strong>Cost of Errors:</strong> <span class="prompt-placeholder-text">[e.g., False Positives are very costly because they waste inspection time. False Negatives are acceptable missed opportunities.]</span></li>
+                                <li><strong>Cost of Errors:</strong> <span class="prompt-placeholder-text">[e.g., False Positives trigger unnecessary retention offers (costly). False Negatives are missed churn events (lost revenue).]</span></li>
                             </ul>
 
                             <h4># Required Evaluation Metrics</h4>
@@ -1103,17 +1103,17 @@
 
                             <h4># Context</h4>
                             <ul>
-                                <li><strong>Project/Objective:</strong> <span class="prompt-placeholder-text">[e.g., Categorizing aging residential properties into specific investment tiers]</span></li>
+                                <li><strong>Project/Objective:</strong> <span class="prompt-placeholder-text">[e.g., Categorizing support tickets by severity level for automated routing]</span></li>
                                 <li><strong>Classes:</strong>
                                     <ul>
-                                        <li>Class 0: <span class="prompt-placeholder-text">[e.g., Teardown/Land Value]</span></li>
-                                        <li>Class 1: <span class="prompt-placeholder-text">[e.g., Heavy Fixer-Upper]</span></li>
-                                        <li>Class 2: <span class="prompt-placeholder-text">[e.g., Light Cosmetic Update]</span></li>
-                                        <li>Class 3: <span class="prompt-placeholder-text">[e.g., Turnkey/No Action Needed]</span></li>
+                                        <li>Class 0: <span class="prompt-placeholder-text">[e.g., Critical / Outage]</span></li>
+                                        <li>Class 1: <span class="prompt-placeholder-text">[e.g., High Priority]</span></li>
+                                        <li>Class 2: <span class="prompt-placeholder-text">[e.g., Medium Priority]</span></li>
+                                        <li>Class 3: <span class="prompt-placeholder-text">[e.g., Low / Informational]</span></li>
                                     </ul>
                                 </li>
                                 <li><strong>Class Imbalance:</strong> <span class="prompt-placeholder-text">[e.g., Moderate imbalance. Classes 2 and 3 make up 70% of the data; Classes 0 and 1 make up 30%.]</span></li>
-                                <li><strong>Cost of Errors:</strong> <span class="prompt-placeholder-text">[e.g., Misclassifying a 'Teardown' as a 'Light Cosmetic Update' is a catastrophic financial error. Confusing a 'Heavy Fixer' with a 'Light Cosmetic' is annoying but manageable.]</span></li>
+                                <li><strong>Cost of Errors:</strong> <span class="prompt-placeholder-text">[e.g., Misclassifying a 'Critical' ticket as 'Low' causes SLA breaches. Confusing 'High' with 'Medium' is suboptimal but manageable.]</span></li>
                             </ul>
 
                             <h4># Required Evaluation Metrics</h4>
@@ -1165,10 +1165,10 @@
 
                             <h4># Context</h4>
                             <ul>
-                                <li><strong>Project/Objective:</strong> <span class="prompt-placeholder-text">[e.g., Forecasting residential property price indices for target zip codes like 92116, 92103, and 92110 to identify market entry points.]</span></li>
+                                <li><strong>Project/Objective:</strong> <span class="prompt-placeholder-text">[e.g., Forecasting weekly product demand across regional warehouses to optimize inventory allocation.]</span></li>
                                 <li><strong>Data Frequency:</strong> <span class="prompt-placeholder-text">[e.g., Monthly data]</span></li>
                                 <li><strong>Data Volume:</strong> <span class="prompt-placeholder-text">[e.g., 20 years of historical data, ~240 observations per series]</span></li>
-                                <li><strong>Multivariate/Univariate:</strong> <span class="prompt-placeholder-text">[e.g., Multivariate - predicting price while using interest rates and housing inventory as exogenous features]</span></li>
+                                <li><strong>Multivariate/Univariate:</strong> <span class="prompt-placeholder-text">[e.g., Multivariate — predicting demand while using promotional spend and weather data as exogenous features]</span></li>
                             </ul>
 
                             <h4># Required Evaluation Diagnostics</h4>
@@ -1219,9 +1219,9 @@
 
                             <h4># Context</h4>
                             <ul>
-                                <li><strong>Project/Objective:</strong> <span class="prompt-placeholder-text">[e.g., Discovering natural groupings of residential properties in the 92116, 92103, and 92110 zip codes based on their structural characteristics and age.]</span></li>
-                                <li><strong>Data Characteristics:</strong> <span class="prompt-placeholder-text">[e.g., 5 continuous numeric features: Square Footage, Year Built, Lot Size, Last Sale Price, and Number of Bedrooms. No missing values.]</span></li>
-                                <li><strong>Business Value:</strong> <span class="prompt-placeholder-text">[e.g., By accurately grouping these properties, we can create tailored, automated investment strategies for each specific cluster rather than treating the whole market identically.]</span></li>
+                                <li><strong>Project/Objective:</strong> <span class="prompt-placeholder-text">[e.g., Discovering natural customer segments based on purchasing behavior and engagement metrics.]</span></li>
+                                <li><strong>Data Characteristics:</strong> <span class="prompt-placeholder-text">[e.g., 5 continuous numeric features: Avg Order Value, Purchase Frequency, Days Since Last Purchase, Session Duration, and Pages Viewed. No missing values.]</span></li>
+                                <li><strong>Business Value:</strong> <span class="prompt-placeholder-text">[e.g., By accurately segmenting customers, we can create tailored marketing campaigns for each group rather than using a one-size-fits-all strategy.]</span></li>
                             </ul>
 
                             <h4># Required Workflow &amp; Outputs</h4>
