@@ -27,7 +27,8 @@
     <meta name="twitter:description"
         content="Data Scientist in San Diego specializing in bioinformatics, urban analytics, and deep learning.">
     <meta name="twitter:image" content="https://www.glownia.ai/og-image.png">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230b0b14'/%3E%3Crect x='2' y='2' width='96' height='96' rx='18' fill='none' stroke='%23ffab40' stroke-width='2' opacity='0.3'/%3E%3Ctext x='50' y='62' font-family='Inter,system-ui,sans-serif' font-size='38' font-weight='700' fill='%23ffab40' text-anchor='middle'%3EDG%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230b0b14'/%3E%3Crect x='2' y='2' width='96' height='96' rx='18' fill='none' stroke='%23ffab40' stroke-width='2' opacity='0.3'/%3E%3Ctext x='50' y='62' font-family='Inter,system-ui,sans-serif' font-size='38' font-weight='700' fill='%23ffab40' text-anchor='middle'%3EDG%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -972,10 +973,9 @@
                     <span>Technical Leader</span> · ML Engineer · Bioinformatics Scientist
                 </p>
                 <p class="hero-bio">
-                    I'm a <strong>machine learning engineer</strong> and technical leader with a
-                    passion for driving AI strategy from research through production.
-                    With a BS in Computer Science from <strong>DePaul University</strong> and an
-                    MS in Data Science from the <strong>University of Chicago</strong>, I specialize in
+                    I'm a machine learning engineer and technical leader with a
+                    BS in Computer Science from <strong>DePaul University</strong> and an
+                    MS in Data Science from the <strong>University of Chicago</strong>. I specialize in
                     designing and scaling <span class="highlight">deep learning systems</span> for
                     large-scale bioinformatics problems.
                     I'm focused on building high-impact AI teams and translating cutting-edge
@@ -1111,10 +1111,13 @@
                         <div class="prompt-card-header-icon"><i class="fas fa-terminal"></i></div>
                         <div class="prompt-card-header-info">
                             <div class="prompt-card-title">Binary Classification Model Evaluation</div>
-                            <div class="prompt-card-desc">Comprehensive evaluation framework for scikit-learn binary classifiers</div>
+                            <div class="prompt-card-desc">Comprehensive evaluation framework for scikit-learn binary
+                                classifiers</div>
                         </div>
                         <div class="prompt-card-actions">
-                            <button class="prompt-btn" onclick="event.stopPropagation(); copyPrompt(this, 'prompt-binary-clf')" aria-label="Copy prompt">
+                            <button class="prompt-btn"
+                                onclick="event.stopPropagation(); copyPrompt(this, 'prompt-binary-clf')"
+                                aria-label="Copy prompt">
                                 <i class="fas fa-copy"></i> Copy
                             </button>
                             <i class="fas fa-chevron-down prompt-expand-icon"></i>
@@ -1124,38 +1127,66 @@
                         <div class="prompt-card-content">
 
                             <h4># Role & Objective</h4>
-                            <p>Act as a Senior Data Scientist. I am evaluating a binary classification model built using Python and <code>scikit-learn</code>. I need you to generate <span class="prompt-placeholder-text">[CHOOSE ONE: the Python evaluation code / a detailed analysis of the provided metric outputs]</span> based on the configuration below.</p>
+                            <p>Act as a Senior Data Scientist. I am evaluating a binary classification model built using
+                                Python and <code>scikit-learn</code>. I need you to generate <span
+                                    class="prompt-placeholder-text">[CHOOSE ONE: the Python evaluation code / a detailed
+                                    analysis of the provided metric outputs]</span> based on the configuration below.
+                            </p>
 
                             <h4># Context</h4>
                             <ul>
-                                <li><strong>Project/Objective:</strong> <span class="prompt-placeholder-text">[e.g., Predicting customer churn for a SaaS platform]</span></li>
-                                <li><strong>Positive Class (1):</strong> <span class="prompt-placeholder-text">[e.g., Churned]</span></li>
-                                <li><strong>Negative Class (0):</strong> <span class="prompt-placeholder-text">[e.g., Retained]</span></li>
-                                <li><strong>Class Imbalance:</strong> <span class="prompt-placeholder-text">[e.g., Highly imbalanced, 90% Negative / 10% Positive]</span></li>
-                                <li><strong>Cost of Errors:</strong> <span class="prompt-placeholder-text">[e.g., False Positives trigger unnecessary retention offers (costly). False Negatives are missed churn events (lost revenue).]</span></li>
+                                <li><strong>Project/Objective:</strong> <span class="prompt-placeholder-text">[e.g.,
+                                        Predicting customer churn for a SaaS platform]</span></li>
+                                <li><strong>Positive Class (1):</strong> <span class="prompt-placeholder-text">[e.g.,
+                                        Churned]</span></li>
+                                <li><strong>Negative Class (0):</strong> <span class="prompt-placeholder-text">[e.g.,
+                                        Retained]</span></li>
+                                <li><strong>Class Imbalance:</strong> <span class="prompt-placeholder-text">[e.g.,
+                                        Highly imbalanced, 90% Negative / 10% Positive]</span></li>
+                                <li><strong>Cost of Errors:</strong> <span class="prompt-placeholder-text">[e.g., False
+                                        Positives trigger unnecessary retention offers (costly). False Negatives are
+                                        missed churn events (lost revenue).]</span></li>
                             </ul>
 
                             <h4># Required Evaluation Metrics</h4>
-                            <p>Please structure your response to address the following metrics. For each, explain what the results indicate regarding the specific objective outlined above.</p>
+                            <p>Please structure your response to address the following metrics. For each, explain what
+                                the results indicate regarding the specific objective outlined above.</p>
                             <ol>
-                                <li><strong>Cumulative Gains Curve:</strong> To assess how effectively we can prioritize the top percentiles of our data based on model confidence.</li>
-                                <li><strong>ROC Curve & AUC:</strong> To evaluate the general baseline separation of the model against a random guesser.</li>
-                                <li><strong>Confusion Matrix (at threshold = <span class="prompt-placeholder-text">[e.g., 0.5]</span>):</strong> To view the exact distribution of False Positives vs. False Negatives.</li>
-                                <li><strong>Classification Report:</strong> To review Precision, Recall, and F1-scores for both individual classes.</li>
-                                <li><strong>Precision-Recall (PR) Curve & AUC-PR:</strong> To evaluate performance specifically on the positive class, given the data balance, and ensure the model isn't generating excessive False Positives.</li>
-                                <li><strong>Lift Curve:</strong> To determine exactly how many times better the model is than a random guess at specific data deciles.</li>
-                                <li><strong>Brier Score (or Log Loss / Cross-Entropy):</strong> To measure probability calibration and verify that the output scores are mathematically reliable for automated downstream pipelines.</li>
-                                <li><strong>Kolmogorov-Smirnov (KS) Statistic:</strong> To measure the maximum degree of separation between the positive and negative class probability distributions.</li>
+                                <li><strong>Cumulative Gains Curve:</strong> To assess how effectively we can prioritize
+                                    the top percentiles of our data based on model confidence.</li>
+                                <li><strong>ROC Curve & AUC:</strong> To evaluate the general baseline separation of the
+                                    model against a random guesser.</li>
+                                <li><strong>Confusion Matrix (at threshold = <span
+                                            class="prompt-placeholder-text">[e.g., 0.5]</span>):</strong> To view the
+                                    exact distribution of False Positives vs. False Negatives.</li>
+                                <li><strong>Classification Report:</strong> To review Precision, Recall, and F1-scores
+                                    for both individual classes.</li>
+                                <li><strong>Precision-Recall (PR) Curve & AUC-PR:</strong> To evaluate performance
+                                    specifically on the positive class, given the data balance, and ensure the model
+                                    isn't generating excessive False Positives.</li>
+                                <li><strong>Lift Curve:</strong> To determine exactly how many times better the model is
+                                    than a random guess at specific data deciles.</li>
+                                <li><strong>Brier Score (or Log Loss / Cross-Entropy):</strong> To measure probability
+                                    calibration and verify that the output scores are mathematically reliable for
+                                    automated downstream pipelines.</li>
+                                <li><strong>Kolmogorov-Smirnov (KS) Statistic:</strong> To measure the maximum degree of
+                                    separation between the positive and negative class probability distributions.</li>
                             </ol>
 
                             <h4># Input Data / Instructions</h4>
                             <div class="prompt-instruction-block">
                                 <span class="label">Option A — Generate Code</span>
-                                Write clean, modular Python code using <code>sklearn.metrics</code>, <code>matplotlib</code>, and <code>scikit-plot</code> or <code>yellowbrick</code> to calculate and plot all the metrics requested above. Assume I have <code>y_true</code>, <code>y_pred</code> (hard predictions), and <code>y_proba</code> (probability predictions) already loaded in my pipeline.
+                                Write clean, modular Python code using <code>sklearn.metrics</code>,
+                                <code>matplotlib</code>, and <code>scikit-plot</code> or <code>yellowbrick</code> to
+                                calculate and plot all the metrics requested above. Assume I have <code>y_true</code>,
+                                <code>y_pred</code> (hard predictions), and <code>y_proba</code> (probability
+                                predictions) already loaded in my pipeline.
                             </div>
                             <div class="prompt-instruction-block">
                                 <span class="label">Option B — Analyze Outputs</span>
-                                Here are the outputs from the metrics. Please analyze them and provide a final recommendation on whether the model is ready for deployment or needs threshold tuning:<br>
+                                Here are the outputs from the metrics. Please analyze them and provide a final
+                                recommendation on whether the model is ready for deployment or needs threshold
+                                tuning:<br>
                                 <span class="prompt-placeholder-text">[PASTE METRIC OUTPUTS/SCORES HERE]</span>
                             </div>
 
@@ -1169,10 +1200,13 @@
                         <div class="prompt-card-header-icon"><i class="fas fa-terminal"></i></div>
                         <div class="prompt-card-header-info">
                             <div class="prompt-card-title">Multi-Class Classification Model Evaluation</div>
-                            <div class="prompt-card-desc">Comprehensive evaluation framework for scikit-learn multi-class classifiers</div>
+                            <div class="prompt-card-desc">Comprehensive evaluation framework for scikit-learn
+                                multi-class classifiers</div>
                         </div>
                         <div class="prompt-card-actions">
-                            <button class="prompt-btn" onclick="event.stopPropagation(); copyPrompt(this, 'prompt-multiclass-clf')" aria-label="Copy prompt">
+                            <button class="prompt-btn"
+                                onclick="event.stopPropagation(); copyPrompt(this, 'prompt-multiclass-clf')"
+                                aria-label="Copy prompt">
                                 <i class="fas fa-copy"></i> Copy
                             </button>
                             <i class="fas fa-chevron-down prompt-expand-icon"></i>
@@ -1182,41 +1216,73 @@
                         <div class="prompt-card-content">
 
                             <h4># Role &amp; Objective</h4>
-                            <p>Act as a Senior Data Scientist. I am evaluating a multi-class classification model built using Python and <code>scikit-learn</code>. I need you to generate <span class="prompt-placeholder-text">[CHOOSE ONE: the Python evaluation code / a detailed analysis of the provided metric outputs]</span> based on the configuration below.</p>
+                            <p>Act as a Senior Data Scientist. I am evaluating a multi-class classification model built
+                                using Python and <code>scikit-learn</code>. I need you to generate <span
+                                    class="prompt-placeholder-text">[CHOOSE ONE: the Python evaluation code / a detailed
+                                    analysis of the provided metric outputs]</span> based on the configuration below.
+                            </p>
 
                             <h4># Context</h4>
                             <ul>
-                                <li><strong>Project/Objective:</strong> <span class="prompt-placeholder-text">[e.g., Categorizing support tickets by severity level for automated routing]</span></li>
+                                <li><strong>Project/Objective:</strong> <span class="prompt-placeholder-text">[e.g.,
+                                        Categorizing support tickets by severity level for automated routing]</span>
+                                </li>
                                 <li><strong>Classes:</strong>
                                     <ul>
-                                        <li>Class 0: <span class="prompt-placeholder-text">[e.g., Critical / Outage]</span></li>
-                                        <li>Class 1: <span class="prompt-placeholder-text">[e.g., High Priority]</span></li>
-                                        <li>Class 2: <span class="prompt-placeholder-text">[e.g., Medium Priority]</span></li>
-                                        <li>Class 3: <span class="prompt-placeholder-text">[e.g., Low / Informational]</span></li>
+                                        <li>Class 0: <span class="prompt-placeholder-text">[e.g., Critical /
+                                                Outage]</span></li>
+                                        <li>Class 1: <span class="prompt-placeholder-text">[e.g., High Priority]</span>
+                                        </li>
+                                        <li>Class 2: <span class="prompt-placeholder-text">[e.g., Medium
+                                                Priority]</span></li>
+                                        <li>Class 3: <span class="prompt-placeholder-text">[e.g., Low /
+                                                Informational]</span></li>
                                     </ul>
                                 </li>
-                                <li><strong>Class Imbalance:</strong> <span class="prompt-placeholder-text">[e.g., Moderate imbalance. Classes 2 and 3 make up 70% of the data; Classes 0 and 1 make up 30%.]</span></li>
-                                <li><strong>Cost of Errors:</strong> <span class="prompt-placeholder-text">[e.g., Misclassifying a 'Critical' ticket as 'Low' causes SLA breaches. Confusing 'High' with 'Medium' is suboptimal but manageable.]</span></li>
+                                <li><strong>Class Imbalance:</strong> <span class="prompt-placeholder-text">[e.g.,
+                                        Moderate imbalance. Classes 2 and 3 make up 70% of the data; Classes 0 and 1
+                                        make up 30%.]</span></li>
+                                <li><strong>Cost of Errors:</strong> <span class="prompt-placeholder-text">[e.g.,
+                                        Misclassifying a 'Critical' ticket as 'Low' causes SLA breaches. Confusing
+                                        'High' with 'Medium' is suboptimal but manageable.]</span></li>
                             </ul>
 
                             <h4># Required Evaluation Metrics</h4>
-                            <p>Please structure your response to address the following metrics. For each, explain what the results indicate regarding the specific objective and cost of errors outlined above.</p>
+                            <p>Please structure your response to address the following metrics. For each, explain what
+                                the results indicate regarding the specific objective and cost of errors outlined above.
+                            </p>
                             <ol>
-                                <li><strong>Classification Report (Macro &amp; Weighted Averages):</strong> To review Precision, Recall, and F1-scores for individual classes, and assess how the model handles minority classes via the Macro average.</li>
-                                <li><strong>N x N Confusion Matrix:</strong> To identify specific misclassifications and class overlap (e.g., which specific categories are being confused with each other).</li>
-                                <li><strong>One-vs-Rest (OvR) ROC AUC:</strong> To evaluate how well the model isolates each individual class from the rest of the dataset.</li>
-                                <li><strong>Cohen's Kappa:</strong> To verify that the model's overall accuracy is driven by genuine learning rather than random chance or majority-class bias.</li>
-                                <li><strong>Multi-Class Log Loss:</strong> To measure probability calibration and ensure the <code>predict_proba</code> distributions across all classes are mathematically reliable.</li>
+                                <li><strong>Classification Report (Macro &amp; Weighted Averages):</strong> To review
+                                    Precision, Recall, and F1-scores for individual classes, and assess how the model
+                                    handles minority classes via the Macro average.</li>
+                                <li><strong>N x N Confusion Matrix:</strong> To identify specific misclassifications and
+                                    class overlap (e.g., which specific categories are being confused with each other).
+                                </li>
+                                <li><strong>One-vs-Rest (OvR) ROC AUC:</strong> To evaluate how well the model isolates
+                                    each individual class from the rest of the dataset.</li>
+                                <li><strong>Cohen's Kappa:</strong> To verify that the model's overall accuracy is
+                                    driven by genuine learning rather than random chance or majority-class bias.</li>
+                                <li><strong>Multi-Class Log Loss:</strong> To measure probability calibration and ensure
+                                    the <code>predict_proba</code> distributions across all classes are mathematically
+                                    reliable.</li>
                             </ol>
 
                             <h4># Input Data / Instructions</h4>
                             <div class="prompt-instruction-block">
                                 <span class="label">Option A — Generate Code</span>
-                                Write clean, modular Python code using <code>sklearn.metrics</code>, <code>matplotlib</code>, and <code>seaborn</code> (for the heatmap) to calculate and plot all the metrics requested above. Ensure parameters like <code>average='macro'</code> or <code>multi_class='ovr'</code> are set correctly. Assume I have <code>y_true</code>, <code>y_pred</code> (hard predictions), and <code>y_proba</code> (probability predictions array of shape <code>(n_samples, n_classes)</code>) already loaded.
+                                Write clean, modular Python code using <code>sklearn.metrics</code>,
+                                <code>matplotlib</code>, and <code>seaborn</code> (for the heatmap) to calculate and
+                                plot all the metrics requested above. Ensure parameters like
+                                <code>average='macro'</code> or <code>multi_class='ovr'</code> are set correctly. Assume
+                                I have <code>y_true</code>, <code>y_pred</code> (hard predictions), and
+                                <code>y_proba</code> (probability predictions array of shape
+                                <code>(n_samples, n_classes)</code>) already loaded.
                             </div>
                             <div class="prompt-instruction-block">
                                 <span class="label">Option B — Analyze Outputs</span>
-                                Here are the outputs from the metrics. Please analyze them, highlighting any specific class confusion, and provide a final recommendation on whether the model is ready for deployment:<br>
+                                Here are the outputs from the metrics. Please analyze them, highlighting any specific
+                                class confusion, and provide a final recommendation on whether the model is ready for
+                                deployment:<br>
                                 <span class="prompt-placeholder-text">[PASTE METRIC OUTPUTS/SCORES HERE]</span>
                             </div>
 
@@ -1230,10 +1296,13 @@
                         <div class="prompt-card-header-icon"><i class="fas fa-terminal"></i></div>
                         <div class="prompt-card-header-info">
                             <div class="prompt-card-title">Time-Series Architecture Evaluation</div>
-                            <div class="prompt-card-desc">Diagnostic framework for choosing between parametric (ARIMA) and deep learning (LSTM) approaches</div>
+                            <div class="prompt-card-desc">Diagnostic framework for choosing between parametric (ARIMA)
+                                and deep learning (LSTM) approaches</div>
                         </div>
                         <div class="prompt-card-actions">
-                            <button class="prompt-btn" onclick="event.stopPropagation(); copyPrompt(this, 'prompt-timeseries-arch')" aria-label="Copy prompt">
+                            <button class="prompt-btn"
+                                onclick="event.stopPropagation(); copyPrompt(this, 'prompt-timeseries-arch')"
+                                aria-label="Copy prompt">
                                 <i class="fas fa-copy"></i> Copy
                             </button>
                             <i class="fas fa-chevron-down prompt-expand-icon"></i>
@@ -1243,36 +1312,65 @@
                         <div class="prompt-card-content">
 
                             <h4># Role &amp; Objective</h4>
-                            <p>Act as a Senior Data Scientist specializing in Time-Series Forecasting. I am trying to determine the optimal architectural approach for a forecasting problem. I need to decide whether to use a traditional parametric model (e.g., ARIMA, SARIMA, VAR) or a non-parametric deep learning model (e.g., LSTM, GRU).</p>
-                            <p>Please generate <span class="prompt-placeholder-text">[CHOOSE ONE: the Python diagnostic code / a detailed analysis of the provided diagnostic outputs]</span> based on the configuration below.</p>
+                            <p>Act as a Senior Data Scientist specializing in Time-Series Forecasting. I am trying to
+                                determine the optimal architectural approach for a forecasting problem. I need to decide
+                                whether to use a traditional parametric model (e.g., ARIMA, SARIMA, VAR) or a
+                                non-parametric deep learning model (e.g., LSTM, GRU).</p>
+                            <p>Please generate <span class="prompt-placeholder-text">[CHOOSE ONE: the Python diagnostic
+                                    code / a detailed analysis of the provided diagnostic outputs]</span> based on the
+                                configuration below.</p>
 
                             <h4># Context</h4>
                             <ul>
-                                <li><strong>Project/Objective:</strong> <span class="prompt-placeholder-text">[e.g., Forecasting weekly product demand across regional warehouses to optimize inventory allocation.]</span></li>
-                                <li><strong>Data Frequency:</strong> <span class="prompt-placeholder-text">[e.g., Monthly data]</span></li>
-                                <li><strong>Data Volume:</strong> <span class="prompt-placeholder-text">[e.g., 20 years of historical data, ~240 observations per series]</span></li>
-                                <li><strong>Multivariate/Univariate:</strong> <span class="prompt-placeholder-text">[e.g., Multivariate — predicting demand while using promotional spend and weather data as exogenous features]</span></li>
+                                <li><strong>Project/Objective:</strong> <span class="prompt-placeholder-text">[e.g.,
+                                        Forecasting weekly product demand across regional warehouses to optimize
+                                        inventory allocation.]</span></li>
+                                <li><strong>Data Frequency:</strong> <span class="prompt-placeholder-text">[e.g.,
+                                        Monthly data]</span></li>
+                                <li><strong>Data Volume:</strong> <span class="prompt-placeholder-text">[e.g., 20 years
+                                        of historical data, ~240 observations per series]</span></li>
+                                <li><strong>Multivariate/Univariate:</strong> <span
+                                        class="prompt-placeholder-text">[e.g., Multivariate — predicting demand while
+                                        using promotional spend and weather data as exogenous features]</span></li>
                             </ul>
 
                             <h4># Required Evaluation Diagnostics</h4>
-                            <p>Please structure your response to address the following diagnostics. For each, explain what the results indicate regarding the choice between a parametric model and a neural network (LSTM).</p>
+                            <p>Please structure your response to address the following diagnostics. For each, explain
+                                what the results indicate regarding the choice between a parametric model and a neural
+                                network (LSTM).</p>
                             <ol>
-                                <li><strong>Stationarity Checks (ADF &amp; KPSS Tests):</strong> To determine if the data has a unit root or deterministic trend, and if standard differencing can make it stationary.</li>
-                                <li><strong>ACF &amp; PACF Analysis:</strong> To assess the strength and clarity of linear dependencies across lags.</li>
-                                <li><strong>Seasonal Decomposition (STL):</strong> To evaluate the complexity of the seasonal patterns and the size/structure of the residual noise.</li>
-                                <li><strong>Volatility / Non-Linearity (ARCH/Ljung-Box):</strong> To detect conditional heteroskedasticity or complex non-linear patterns that standard linear models cannot capture.</li>
-                                <li><strong>Dimensionality &amp; Viability Check:</strong> Based on the data volume and number of features provided in the context, explicitly state whether an LSTM is prone to overfitting here, or if the dataset is robust enough to support deep learning.</li>
+                                <li><strong>Stationarity Checks (ADF &amp; KPSS Tests):</strong> To determine if the
+                                    data has a unit root or deterministic trend, and if standard differencing can make
+                                    it stationary.</li>
+                                <li><strong>ACF &amp; PACF Analysis:</strong> To assess the strength and clarity of
+                                    linear dependencies across lags.</li>
+                                <li><strong>Seasonal Decomposition (STL):</strong> To evaluate the complexity of the
+                                    seasonal patterns and the size/structure of the residual noise.</li>
+                                <li><strong>Volatility / Non-Linearity (ARCH/Ljung-Box):</strong> To detect conditional
+                                    heteroskedasticity or complex non-linear patterns that standard linear models cannot
+                                    capture.</li>
+                                <li><strong>Dimensionality &amp; Viability Check:</strong> Based on the data volume and
+                                    number of features provided in the context, explicitly state whether an LSTM is
+                                    prone to overfitting here, or if the dataset is robust enough to support deep
+                                    learning.</li>
                             </ol>
 
                             <h4># Input Data / Instructions</h4>
                             <div class="prompt-instruction-block">
                                 <span class="label">Option A — Generate Code</span>
-                                Write clean, modular Python code using <code>statsmodels</code>, <code>pandas</code>, and <code>matplotlib</code>. The code should calculate the ADF and KPSS <em>p</em>-values, plot the ACF/PACF, perform an STL decomposition, and run an ARCH test for volatility. Assume I have a pandas DataFrame <code>df</code> with a datetime index and my target variable in a column named <code>target</code>.
+                                Write clean, modular Python code using <code>statsmodels</code>, <code>pandas</code>,
+                                and <code>matplotlib</code>. The code should calculate the ADF and KPSS
+                                <em>p</em>-values, plot the ACF/PACF, perform an STL decomposition, and run an ARCH test
+                                for volatility. Assume I have a pandas DataFrame <code>df</code> with a datetime index
+                                and my target variable in a column named <code>target</code>.
                             </div>
                             <div class="prompt-instruction-block">
                                 <span class="label">Option B — Analyze Outputs</span>
-                                Here are the outputs from the diagnostic tests. Please analyze them and provide a definitive recommendation: should I build a parametric model (ARIMA/VAR) or a non-parametric model (LSTM) for this specific data?<br>
-                                <span class="prompt-placeholder-text">[PASTE METRIC OUTPUTS/SCORES/PLOT DESCRIPTIONS HERE]</span>
+                                Here are the outputs from the diagnostic tests. Please analyze them and provide a
+                                definitive recommendation: should I build a parametric model (ARIMA/VAR) or a
+                                non-parametric model (LSTM) for this specific data?<br>
+                                <span class="prompt-placeholder-text">[PASTE METRIC OUTPUTS/SCORES/PLOT DESCRIPTIONS
+                                    HERE]</span>
                             </div>
 
                         </div>
@@ -1285,10 +1383,13 @@
                         <div class="prompt-card-header-icon"><i class="fas fa-terminal"></i></div>
                         <div class="prompt-card-header-info">
                             <div class="prompt-card-title">K-Means Clustering &amp; Optimal k Selection</div>
-                            <div class="prompt-card-desc">End-to-end unsupervised segmentation with programmatic elbow detection</div>
+                            <div class="prompt-card-desc">End-to-end unsupervised segmentation with programmatic elbow
+                                detection</div>
                         </div>
                         <div class="prompt-card-actions">
-                            <button class="prompt-btn" onclick="event.stopPropagation(); copyPrompt(this, 'prompt-kmeans-clustering')" aria-label="Copy prompt">
+                            <button class="prompt-btn"
+                                onclick="event.stopPropagation(); copyPrompt(this, 'prompt-kmeans-clustering')"
+                                aria-label="Copy prompt">
                                 <i class="fas fa-copy"></i> Copy
                             </button>
                             <i class="fas fa-chevron-down prompt-expand-icon"></i>
@@ -1298,52 +1399,83 @@
                         <div class="prompt-card-content">
 
                             <h4># Role &amp; Objective</h4>
-                            <p>Act as a Senior Data Scientist. My core objective is to answer the question: <strong>"What is the best, most natural number of groups (k) found in this dataset?"</strong> I am using unsupervised learning (K-Means clustering) to segment my data. I need you to write complete, executable Python code that scales the data, determines the optimal number of clusters by mathematically calculating the inflection point of an Elbow Curve, generates the final model, and labels the dataset.</p>
+                            <p>Act as a Senior Data Scientist. My core objective is to answer the question:
+                                <strong>"What is the best, most natural number of groups (k) found in this
+                                    dataset?"</strong> I am using unsupervised learning (K-Means clustering) to segment
+                                my data. I need you to write complete, executable Python code that scales the data,
+                                determines the optimal number of clusters by mathematically calculating the inflection
+                                point of an Elbow Curve, generates the final model, and labels the dataset.
+                            </p>
 
                             <h4># Context</h4>
                             <ul>
-                                <li><strong>Project/Objective:</strong> <span class="prompt-placeholder-text">[e.g., Discovering natural customer segments based on purchasing behavior and engagement metrics.]</span></li>
-                                <li><strong>Data Characteristics:</strong> <span class="prompt-placeholder-text">[e.g., 5 continuous numeric features: Avg Order Value, Purchase Frequency, Days Since Last Purchase, Session Duration, and Pages Viewed. No missing values.]</span></li>
-                                <li><strong>Business Value:</strong> <span class="prompt-placeholder-text">[e.g., By accurately segmenting customers, we can create tailored marketing campaigns for each group rather than using a one-size-fits-all strategy.]</span></li>
+                                <li><strong>Project/Objective:</strong> <span class="prompt-placeholder-text">[e.g.,
+                                        Discovering natural customer segments based on purchasing behavior and
+                                        engagement metrics.]</span></li>
+                                <li><strong>Data Characteristics:</strong> <span class="prompt-placeholder-text">[e.g.,
+                                        5 continuous numeric features: Avg Order Value, Purchase Frequency, Days Since
+                                        Last Purchase, Session Duration, and Pages Viewed. No missing values.]</span>
+                                </li>
+                                <li><strong>Business Value:</strong> <span class="prompt-placeholder-text">[e.g., By
+                                        accurately segmenting customers, we can create tailored marketing campaigns for
+                                        each group rather than using a one-size-fits-all strategy.]</span></li>
                             </ul>
 
                             <h4># Required Workflow &amp; Outputs</h4>
                             <p>Please generate a single, cohesive Python script that performs the following steps:</p>
                             <ol>
-                                <li><strong>Pre-processing:</strong> Apply <code>StandardScaler</code> to the features, as K-Means is a distance-based algorithm and requires normalized data.</li>
+                                <li><strong>Pre-processing:</strong> Apply <code>StandardScaler</code> to the features,
+                                    as K-Means is a distance-based algorithm and requires normalized data.</li>
                                 <li><strong>Determine Optimal 'k' (Elbow Method &amp; Silhouette):</strong>
                                     <ul>
                                         <li>Iterate through a range of clusters (e.g., k=2 to k=10).</li>
-                                        <li>Calculate the Within-Cluster Sum of Squares (WCSS/Inertia) for each 'k'.</li>
-                                        <li>Calculate the Silhouette Score for each 'k' as a secondary validation metric.</li>
+                                        <li>Calculate the Within-Cluster Sum of Squares (WCSS/Inertia) for each 'k'.
+                                        </li>
+                                        <li>Calculate the Silhouette Score for each 'k' as a secondary validation
+                                            metric.</li>
                                     </ul>
                                 </li>
-                                <li><strong>Calculate the Inflection Point:</strong> Do not rely on visual inspection. Programmatically calculate the exact inflection point (the "elbow") of the WCSS curve. You may use the <code>kneed</code> library (<code>KneeLocator</code>) or a distance-to-line mathematical implementation.</li>
+                                <li><strong>Calculate the Inflection Point:</strong> Do not rely on visual inspection.
+                                    Programmatically calculate the exact inflection point (the "elbow") of the WCSS
+                                    curve. You may use the <code>kneed</code> library (<code>KneeLocator</code>) or a
+                                    distance-to-line mathematical implementation.</li>
                                 <li><strong>Visualization (<code>seaborn</code>):</strong>
                                     <ul>
-                                        <li>Create a professional <code>seaborn</code> (<code>sns</code>) line plot of the Elbow Curve (WCSS vs. Number of Clusters).</li>
-                                        <li>Add a vertical dashed line or a distinct marker on the plot to explicitly highlight the calculated inflection point.</li>
+                                        <li>Create a professional <code>seaborn</code> (<code>sns</code>) line plot of
+                                            the Elbow Curve (WCSS vs. Number of Clusters).</li>
+                                        <li>Add a vertical dashed line or a distinct marker on the plot to explicitly
+                                            highlight the calculated inflection point.</li>
                                     </ul>
                                 </li>
                                 <li><strong>Final Model &amp; Labeling:</strong>
                                     <ul>
-                                        <li>Instantiate a final K-Means model using the programmatically calculated optimal 'k'.</li>
+                                        <li>Instantiate a final K-Means model using the programmatically calculated
+                                            optimal 'k'.</li>
                                         <li>Fit the model and predict the cluster labels.</li>
-                                        <li>Append these labels as a new column named <code>Cluster_Label</code> to the original dataframe.</li>
+                                        <li>Append these labels as a new column named <code>Cluster_Label</code> to the
+                                            original dataframe.</li>
                                     </ul>
                                 </li>
-                                <li><strong>Cluster Profiling:</strong> Group the original dataframe by <code>Cluster_Label</code> and calculate the mean for each feature. Print this summary table so I can interpret the real-world characteristics of each group.</li>
+                                <li><strong>Cluster Profiling:</strong> Group the original dataframe by
+                                    <code>Cluster_Label</code> and calculate the mean for each feature. Print this
+                                    summary table so I can interpret the real-world characteristics of each group.
+                                </li>
                             </ol>
 
                             <h4># Input Data / Instructions</h4>
                             <div class="prompt-instruction-block">
                                 <span class="label">Generate Code</span>
-                                Write clean, modular Python code using <code>pandas</code>, <code>scikit-learn</code>, <code>matplotlib.pyplot</code>, and <code>seaborn</code>. Assume my data is already loaded into a pandas DataFrame named <code>df</code> and the features I want to cluster on are in a list named <code>features_to_cluster</code>.
+                                Write clean, modular Python code using <code>pandas</code>, <code>scikit-learn</code>,
+                                <code>matplotlib.pyplot</code>, and <code>seaborn</code>. Assume my data is already
+                                loaded into a pandas DataFrame named <code>df</code> and the features I want to cluster
+                                on are in a list named <code>features_to_cluster</code>.
                             </div>
                             <div class="prompt-instruction-block">
                                 <span class="label">Optional — Analyze Output</span>
-                                If you want the LLM to analyze the output, paste the printed Cluster Profile or Silhouette Scores here once you run the code.<br>
-                                <span class="prompt-placeholder-text">[PASTE CLUSTER PROFILE / SILHOUETTE SCORES HERE]</span>
+                                If you want the LLM to analyze the output, paste the printed Cluster Profile or
+                                Silhouette Scores here once you run the code.<br>
+                                <span class="prompt-placeholder-text">[PASTE CLUSTER PROFILE / SILHOUETTE SCORES
+                                    HERE]</span>
                             </div>
 
                         </div>
@@ -1361,13 +1493,15 @@
         <p class="footer-year" id="footer-year"></p>
         <div class="footer-meta">
             <div class="footer-citation">
-                <span class="footer-citation-text" id="citation-text">Glownia, D. (2026). ML Prompt Templates. https://www.glownia.ai</span>
+                <span class="footer-citation-text" id="citation-text">Glownia, D. (2026). ML Prompt Templates.
+                    https://www.glownia.ai</span>
                 <button class="footer-citation-btn" onclick="copyCitation()" aria-label="Copy citation">
                     <i class="fas fa-copy"></i> Cite
                 </button>
             </div>
             <div class="footer-divider"></div>
-            <a href="https://ko-fi.com/danielglownia" target="_blank" rel="noopener noreferrer" class="footer-coffee" aria-label="Support on Ko-fi">
+            <a href="https://ko-fi.com/danielglownia" target="_blank" rel="noopener noreferrer" class="footer-coffee"
+                aria-label="Support on Ko-fi">
                 ☕ Buy me a coffee
             </a>
         </div>
