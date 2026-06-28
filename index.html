@@ -907,6 +907,112 @@
             }
         }
 
+        .pub-card {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            padding: 28px 32px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .pub-card:hover {
+            border-color: rgba(0, 229, 255, 0.35);
+            box-shadow: 0 8px 32px rgba(0, 229, 255, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .pub-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .pub-badge {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent-cyan);
+            background: rgba(0, 229, 255, 0.08);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: var(--radius-sm);
+            padding: 3px 10px;
+        }
+
+        .pub-journal {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        .pub-year {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-left: auto;
+        }
+
+        .pub-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        .pub-authors {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .pub-authors .pub-author-highlight {
+            color: var(--accent-amber);
+            font-weight: 600;
+        }
+
+        .pub-abstract {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            border-left: 2px solid rgba(0, 229, 255, 0.2);
+            padding-left: 14px;
+            margin-top: 2px;
+        }
+
+        .pub-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .pub-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            padding: 5px 12px;
+            border: 1px solid rgba(0, 229, 255, 0.25);
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+        }
+
+        .pub-link:hover {
+            background: rgba(0, 229, 255, 0.08);
+            border-color: var(--accent-cyan);
+        }
+
         /* ========================================
            SELECTION STYLE
            ======================================== */
@@ -941,7 +1047,7 @@
     <nav id="main-nav" aria-label="Main navigation">
         <a href="#intro">Intro</a>
         <a href="#links">Links</a>
-        <a href="#agents">Agents</a>
+        <a href="#publications">Publications</a>
         <a href="#prompts">Prompts</a>
     </nav>
 
@@ -1053,28 +1159,50 @@
             </div>
         </section>
 
-        <!-- ====== AGENTS ====== -->
-        <section id="agents" aria-label="AI Agents">
+        <!-- ====== PUBLICATIONS ====== -->
+        <section id="publications" aria-label="Publications">
             <div class="section-header fade-in">
-                <p class="section-label">Build</p>
-                <h2 class="section-title">Agents</h2>
-                <p class="section-subtitle">AI agents I've built — coming soon.</p>
+                <p class="section-label">Research</p>
+                <h2 class="section-title">Publications</h2>
+                <p class="section-subtitle">Peer-reviewed research I've contributed to.</p>
             </div>
 
-            <div class="placeholder-grid">
-                <div class="placeholder-card fade-in fade-in-delay-1">
-                    <div class="placeholder-icon"><i class="fas fa-plus"></i></div>
-                    <span class="placeholder-text">agent_01</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41472057/" target="_blank" rel="noopener noreferrer"
+                class="pub-card fade-in fade-in-delay-1" id="pub-teamngs" aria-label="Read teamNGS publication">
+
+                <div class="pub-card-meta">
+                    <span class="pub-badge">Co-Author</span>
+                    <span class="pub-journal">Microorganisms</span>
+                    <span class="pub-year">2025</span>
                 </div>
-                <div class="placeholder-card fade-in fade-in-delay-2">
-                    <div class="placeholder-icon"><i class="fas fa-plus"></i></div>
-                    <span class="placeholder-text">agent_02</span>
+
+                <div class="pub-title">
+                    teamNGS Balances Sensitivity for Viruses with Comprehensive Microbial Detection in Clinical Specimens
                 </div>
-                <div class="placeholder-card fade-in fade-in-delay-3">
-                    <div class="placeholder-icon"><i class="fas fa-plus"></i></div>
-                    <span class="placeholder-text">agent_03</span>
+
+                <div class="pub-authors">
+                    Yamaguchi J, Orf GS, Malinauskas J, Mata M, Weiss SL, Forberg K, Meyer TV, Wiebe PO, Mowerman I,
+                    Piotrowski SJ, <span class="pub-author-highlight">Glownia D</span>, Rodgers MA, Hackett J Jr,
+                    Suputtamongkol Y, Phoompoung P, Gomathi S, Pradeep A, Solomon SS, Bbosa N, Kaleebu P,
+                    Ahouidi AD, Mboup S, Sequeira AF, Tojo A, Cloherty GA, Berg MG.
                 </div>
-            </div>
+
+                <p class="pub-abstract">
+                    Probe-based capture represents a highly sensitive and cost-effective approach for overcoming host
+                    background and enriching viruses in metagenomic NGS (mNGS) libraries. Using clinical specimens
+                    collected globally from patients with fever or respiratory illness, teNGS achieved increased
+                    sensitivity with 100–10,000× increases in depth and &gt;50% genome coverage for pathogens with
+                    titers ≥ 1000 cp/mL. teamNGS couples target enrichment with standard mNGS into a single
+                    sequencing run, improving genome recovery while maintaining comprehensive non-viral microbial detection.
+                </p>
+
+                <div class="pub-links">
+                    <span class="pub-link"><i class="fas fa-external-link-alt"></i> PubMed</span>
+                    <span class="pub-link"><i class="fas fa-lock-open"></i> PMC Free Article</span>
+                    <span class="pub-link"><i class="fas fa-fingerprint"></i> DOI: 10.3390/microorganisms13122854</span>
+                </div>
+
+            </a>
         </section>
 
         <!-- ====== PROMPTS ====== -->
