@@ -891,6 +891,58 @@
             .dna-decoration {
                 display: none;
             }
+
+            /* Loop flow: vertical stack on mobile */
+            .loop-flow {
+                flex-direction: column;
+                align-items: stretch;
+                padding-bottom: 16px;
+            }
+
+            .loop-flow-step {
+                flex-direction: row;
+                gap: 14px;
+                align-items: flex-start;
+            }
+
+            .loop-flow-step-bubble {
+                width: 40px;
+                height: 40px;
+                flex-shrink: 0;
+            }
+
+            .loop-flow-step-sub {
+                max-width: unset;
+                text-align: left;
+            }
+
+            .loop-flow-step-label {
+                text-align: left;
+            }
+
+            .loop-flow-arrow {
+                padding: 4px 0 4px 18px;
+            }
+
+            .loop-flow-arrow svg {
+                transform: rotate(90deg);
+            }
+
+            .loop-flow-back {
+                position: static;
+                transform: none;
+                margin-top: 8px;
+                justify-content: flex-start;
+                padding-left: 4px;
+            }
+
+            .loop-card-header {
+                padding: 16px 18px;
+            }
+
+            .loop-card-body-inner {
+                padding: 0 18px 18px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -904,6 +956,10 @@
 
             .link-card {
                 padding: 18px 20px;
+            }
+
+            .loop-card-actions .loop-btn {
+                display: none;
             }
         }
 
@@ -1014,6 +1070,420 @@
         }
 
         /* ========================================
+           LOOP CARDS
+           ======================================== */
+        .loops-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .loop-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: border-color 0.25s ease;
+        }
+
+        .loop-card.expanded {
+            border-color: rgba(0, 229, 255, 0.3);
+        }
+
+        .loop-card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 22px 28px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s ease;
+        }
+
+        .loop-card-header:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .loop-card-header-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-sm);
+            background: rgba(0, 229, 255, 0.08);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--accent-cyan);
+            flex-shrink: 0;
+        }
+
+        .loop-card-header-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .loop-card-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 3px;
+        }
+
+        .loop-card-desc {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+
+        .loop-card-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .loop-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 5px 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .loop-btn:hover {
+            color: var(--accent-cyan);
+            border-color: rgba(0, 229, 255, 0.4);
+        }
+
+        .loop-btn.copied {
+            color: #4ade80;
+            border-color: rgba(74, 222, 128, 0.4);
+        }
+
+        .loop-expand-icon {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .loop-card.expanded .loop-expand-icon {
+            transform: rotate(180deg);
+        }
+
+        /* ---- Loop card body ---- */
+        .loop-card-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .loop-card.expanded .loop-card-body {
+            max-height: 3200px;
+        }
+
+        .loop-card-body-inner {
+            padding: 0 28px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        /* ---- Animated flow diagram ---- */
+        .loop-flow {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            padding: 24px 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            position: relative;
+            overflow: visible;
+            flex-wrap: nowrap;
+        }
+
+        .loop-flow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .loop-flow-step-bubble {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            border: 2px solid;
+            position: relative;
+            animation: loopPulse 3s ease-in-out infinite;
+        }
+
+        .loop-flow-step:nth-child(1) .loop-flow-step-bubble {
+            background: rgba(255, 171, 64, 0.1);
+            border-color: rgba(255, 171, 64, 0.5);
+            color: var(--accent-amber);
+            animation-delay: 0s;
+        }
+
+        .loop-flow-step:nth-child(3) .loop-flow-step-bubble {
+            background: rgba(0, 229, 255, 0.08);
+            border-color: rgba(0, 229, 255, 0.4);
+            color: var(--accent-cyan);
+            animation-delay: 0.6s;
+        }
+
+        .loop-flow-step:nth-child(5) .loop-flow-step-bubble {
+            background: rgba(224, 64, 251, 0.08);
+            border-color: rgba(224, 64, 251, 0.4);
+            color: #e040fb;
+            animation-delay: 1.2s;
+        }
+
+        .loop-flow-step:nth-child(7) .loop-flow-step-bubble {
+            background: rgba(74, 222, 128, 0.08);
+            border-color: rgba(74, 222, 128, 0.4);
+            color: #4ade80;
+            animation-delay: 1.8s;
+        }
+
+        @keyframes loopPulse {
+            0%, 100% { box-shadow: 0 0 0 0 transparent; }
+            50% { box-shadow: 0 0 0 6px rgba(0, 229, 255, 0.07); }
+        }
+
+        .loop-flow-step-label {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .loop-flow-step-sub {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            text-align: center;
+            max-width: 80px;
+            line-height: 1.4;
+        }
+
+        .loop-flow-arrow {
+            display: flex;
+            align-items: center;
+            padding: 0 4px;
+            padding-bottom: 28px;
+            flex-shrink: 0;
+        }
+
+        .loop-flow-arrow svg {
+            opacity: 0;
+            animation: loopArrowFade 3s ease-in-out infinite;
+        }
+
+        .loop-flow-arrow:nth-of-type(2) svg { animation-delay: 0.3s; }
+        .loop-flow-arrow:nth-of-type(4) svg { animation-delay: 0.9s; }
+        .loop-flow-arrow:nth-of-type(6) svg { animation-delay: 1.5s; }
+
+        @keyframes loopArrowFade {
+            0%, 20%, 100% { opacity: 0.2; }
+            50%, 70% { opacity: 1; }
+        }
+
+        .loop-flow-back {
+            position: absolute;
+            bottom: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            animation: loopBackFade 3s ease-in-out infinite;
+            animation-delay: 2.4s;
+        }
+
+        .loop-flow-back i {
+            color: rgba(224, 64, 251, 0.7);
+        }
+
+        @keyframes loopBackFade {
+            0%, 30%, 100% { opacity: 0.3; }
+            60%, 80% { opacity: 1; }
+        }
+
+        /* ---- Goal block ---- */
+        .loop-goal-block {
+            background: rgba(74, 222, 128, 0.04);
+            border: 1px solid rgba(74, 222, 128, 0.15);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+        }
+
+        .loop-goal-label {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #4ade80;
+            margin-bottom: 8px;
+        }
+
+        .loop-goal-text {
+            font-size: 0.83rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .loop-goal-metrics {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .loop-metric-chip {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            padding: 3px 10px;
+            border-radius: 999px;
+            border: 1px solid;
+        }
+
+        .loop-metric-chip.required {
+            color: var(--accent-cyan);
+            border-color: rgba(0, 229, 255, 0.3);
+            background: rgba(0, 229, 255, 0.06);
+        }
+
+        .loop-metric-chip.optional {
+            color: var(--text-muted);
+            border-color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        /* ---- JSON context viewer ---- */
+        .loop-context-block {
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+
+        .loop-context-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            user-select: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .loop-context-block.open .loop-context-header {
+            border-bottom-color: var(--border-subtle);
+        }
+
+        .loop-context-filename {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            flex: 1;
+        }
+
+        .loop-context-iteration {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+        }
+
+        .loop-context-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .loop-context-block.open .loop-context-body {
+            max-height: 2000px;
+        }
+
+        .loop-context-pre {
+            margin: 0;
+            padding: 20px;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            background: rgba(0, 0, 0, 0.15);
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        /* JSON syntax colouring */
+        .json-key    { color: var(--accent-cyan); }
+        .json-str    { color: #a5f3a5; }
+        .json-num    { color: var(--accent-amber); }
+        .json-bool   { color: #e040fb; }
+        .json-null   { color: var(--text-muted); }
+
+        /* ---- Source note ---- */
+        .loop-source-note {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            padding-top: 4px;
+        }
+
+        .loop-source-note a {
+            color: rgba(0, 229, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .loop-source-note a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* prefers-reduced-motion */
+        @media (prefers-reduced-motion: reduce) {
+            .loop-flow-step-bubble,
+            .loop-flow-arrow svg,
+            .loop-flow-back {
+                animation: none !important;
+                opacity: 1 !important;
+            }
+        }
+
+        /* ========================================
            SELECTION STYLE
            ======================================== */
         ::selection {
@@ -1049,6 +1519,7 @@
         <a href="#links">Links</a>
         <a href="#publications">Publications</a>
         <a href="#prompts">Prompts</a>
+        <a href="#loops">Loops</a>
     </nav>
 
     <main>
@@ -1595,6 +2066,205 @@
             </div>
         </section>
 
+        <!-- ====== LOOPS ====== -->
+        <section id="loops" aria-label="Loop Engineering">
+            <div class="section-header fade-in">
+                <p class="section-label">Engineer</p>
+                <h2 class="section-title">Loops</h2>
+                <p class="section-subtitle">Autonomous AI workflows designed to prompt themselves.</p>
+            </div>
+
+            <div class="loops-list">
+
+                <!-- Loop 01: Binary Classifier Training Loop -->
+                <div class="loop-card fade-in fade-in-delay-1" id="loop-binary-clf">
+                    <div class="loop-card-header" onclick="toggleLoop(this)">
+                        <div class="loop-card-header-icon">
+                            <i class="fas fa-rotate"></i>
+                        </div>
+                        <div class="loop-card-header-info">
+                            <div class="loop-card-title">Binary Classifier Training Loop</div>
+                            <div class="loop-card-desc">Goal-driven loop — LLM builds, evaluates, and refines until performance thresholds are met</div>
+                        </div>
+                        <div class="loop-card-actions">
+                            <button class="loop-btn"
+                                onclick="event.stopPropagation(); copyLoopContext(this, 'loop-binary-clf')"
+                                aria-label="Copy LLM context JSON">
+                                <i class="fas fa-copy"></i> Copy JSON
+                            </button>
+                            <i class="fas fa-chevron-down loop-expand-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="loop-card-body">
+                        <div class="loop-card-body-inner">
+
+                            <!-- Animated pipeline diagram -->
+                            <div class="loop-flow" aria-hidden="true">
+
+                                <div class="loop-flow-step">
+                                    <div class="loop-flow-step-bubble"><i class="fas fa-code"></i></div>
+                                    <div class="loop-flow-step-label">Build</div>
+                                    <div class="loop-flow-step-sub">LLM writes or updates model code</div>
+                                </div>
+
+                                <div class="loop-flow-arrow">
+                                    <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
+                                        <path d="M2 8 H22 M18 3 L24 8 L18 13" stroke="url(#loopGrad1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <defs><linearGradient id="loopGrad1" x1="0" y1="0" x2="28" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#ffab40"/><stop offset="1" stop-color="#00e5ff"/></linearGradient></defs>
+                                    </svg>
+                                </div>
+
+                                <div class="loop-flow-step">
+                                    <div class="loop-flow-step-bubble"><i class="fas fa-brain"></i></div>
+                                    <div class="loop-flow-step-label">Train</div>
+                                    <div class="loop-flow-step-sub">model.fit() runs on dataset</div>
+                                </div>
+
+                                <div class="loop-flow-arrow">
+                                    <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
+                                        <path d="M2 8 H22 M18 3 L24 8 L18 13" stroke="url(#loopGrad2)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <defs><linearGradient id="loopGrad2" x1="0" y1="0" x2="28" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#00e5ff"/><stop offset="1" stop-color="#e040fb"/></linearGradient></defs>
+                                    </svg>
+                                </div>
+
+                                <div class="loop-flow-step">
+                                    <div class="loop-flow-step-bubble"><i class="fas fa-chart-line"></i></div>
+                                    <div class="loop-flow-step-label">Evaluate</div>
+                                    <div class="loop-flow-step-sub">Metrics computed → LLM_context.json written</div>
+                                </div>
+
+                                <div class="loop-flow-arrow">
+                                    <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
+                                        <path d="M2 8 H22 M18 3 L24 8 L18 13" stroke="url(#loopGrad3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <defs><linearGradient id="loopGrad3" x1="0" y1="0" x2="28" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#e040fb"/><stop offset="1" stop-color="#4ade80"/></linearGradient></defs>
+                                    </svg>
+                                </div>
+
+                                <div class="loop-flow-step">
+                                    <div class="loop-flow-step-bubble"><i class="fas fa-code-branch"></i></div>
+                                    <div class="loop-flow-step-label">Decide</div>
+                                    <div class="loop-flow-step-sub">LLM reads context, determines next action</div>
+                                </div>
+
+                                <div class="loop-flow-back">
+                                    <i class="fas fa-rotate-left"></i>
+                                    iterate until goal_met = true
+                                </div>
+                            </div>
+
+                            <!-- Goal block -->
+                            <div class="loop-goal-block">
+                                <div class="loop-goal-label"><i class="fas fa-bullseye"></i> Stopping Condition</div>
+                                <p class="loop-goal-text">
+                                    After every iteration, the LLM reads <code style="font-family:var(--font-mono);font-size:0.8em;color:var(--accent-cyan);">LLM_context.json</code> and checks whether all <strong>required</strong> metric goals have been met. Optional metrics inform its reasoning but do not gate the loop. The loop exits autonomously when <code style="font-family:var(--font-mono);font-size:0.8em;color:#4ade80;">goal_met: true</code> — or when <code style="font-family:var(--font-mono);font-size:0.8em;color:var(--accent-amber);">max_iterations</code> is reached.
+                                </p>
+                                <div class="loop-goal-metrics">
+                                    <span class="loop-metric-chip required">ROC-AUC ≥ 0.90 ✦ required</span>
+                                    <span class="loop-metric-chip required">F1 (positive) ≥ 0.80 ✦ required</span>
+                                    <span class="loop-metric-chip optional">PR-AUC ≥ 0.82 · optional</span>
+                                    <span class="loop-metric-chip optional">Brier Score ≤ 0.12 · optional</span>
+                                </div>
+                            </div>
+
+                            <!-- LLM_context.json inline viewer -->
+                            <div class="loop-context-block" id="loop-binary-clf-context">
+                                <div class="loop-context-header" onclick="toggleLoopContext(this)">
+                                    <i class="fas fa-file-code" style="color:var(--accent-cyan);font-size:0.8rem;"></i>
+                                    <span class="loop-context-filename">LLM_context.json</span>
+                                    <span class="loop-context-iteration">iteration_03</span>
+                                    <button class="loop-btn" style="margin-left:auto;"
+                                        onclick="event.stopPropagation(); copyLoopContext(this, 'loop-binary-clf')"
+                                        aria-label="Copy LLM context JSON">
+                                        <i class="fas fa-copy"></i> Copy
+                                    </button>
+                                    <i class="fas fa-chevron-down loop-expand-icon" style="margin-left:4px;"></i>
+                                </div>
+                                <div class="loop-context-body">
+<pre class="loop-context-pre" id="loop-binary-clf-json">{
+  <span class="json-key">"loop_meta"</span>: {
+    <span class="json-key">"loop_id"</span>: <span class="json-str">"binary-clf-v1"</span>,
+    <span class="json-key">"iteration"</span>: <span class="json-num">3</span>,
+    <span class="json-key">"max_iterations"</span>: <span class="json-num">10</span>,
+    <span class="json-key">"status"</span>: <span class="json-str">"in_progress"</span>,
+    <span class="json-key">"last_updated"</span>: <span class="json-str">"2026-06-28T07:41:00Z"</span>
+  },
+
+  <span class="json-key">"performance_goal"</span>: {
+    <span class="json-key">"description"</span>: <span class="json-str">"User-configurable thresholds. Loop exits when ALL required goals are met."</span>,
+    <span class="json-key">"goals"</span>: [
+      { <span class="json-key">"metric"</span>: <span class="json-str">"roc_auc"</span>,     <span class="json-key">"operator"</span>: <span class="json-str">">="</span>, <span class="json-key">"threshold"</span>: <span class="json-num">0.90</span>, <span class="json-key">"required"</span>: <span class="json-bool">true</span>  },
+      { <span class="json-key">"metric"</span>: <span class="json-str">"pr_auc"</span>,      <span class="json-key">"operator"</span>: <span class="json-str">">="</span>, <span class="json-key">"threshold"</span>: <span class="json-num">0.82</span>, <span class="json-key">"required"</span>: <span class="json-bool">false</span> },
+      { <span class="json-key">"metric"</span>: <span class="json-str">"f1_positive"</span>, <span class="json-key">"operator"</span>: <span class="json-str">">="</span>, <span class="json-key">"threshold"</span>: <span class="json-num">0.80</span>, <span class="json-key">"required"</span>: <span class="json-bool">true</span>  },
+      { <span class="json-key">"metric"</span>: <span class="json-str">"brier_score"</span>, <span class="json-key">"operator"</span>: <span class="json-str">&lt;="</span>, <span class="json-key">"threshold"</span>: <span class="json-num">0.12</span>, <span class="json-key">"required"</span>: <span class="json-bool">false</span> }
+    ],
+    <span class="json-key">"goal_met"</span>: <span class="json-bool">false</span>
+  },
+
+  <span class="json-key">"current_metrics"</span>: {
+    <span class="json-key">"roc_auc"</span>:      { <span class="json-key">"value"</span>: <span class="json-num">0.867</span>, <span class="json-key">"goal_met"</span>: <span class="json-bool">false</span>, <span class="json-key">"delta_from_prev"</span>: <span class="json-num">+0.023</span> },
+    <span class="json-key">"pr_auc"</span>:       { <span class="json-key">"value"</span>: <span class="json-num">0.791</span>, <span class="json-key">"goal_met"</span>: <span class="json-bool">false</span>, <span class="json-key">"delta_from_prev"</span>: <span class="json-num">+0.031</span> },
+    <span class="json-key">"f1_positive"</span>:  { <span class="json-key">"value"</span>: <span class="json-num">0.763</span>, <span class="json-key">"goal_met"</span>: <span class="json-bool">false</span>, <span class="json-key">"delta_from_prev"</span>: <span class="json-num">+0.018</span> },
+    <span class="json-key">"accuracy"</span>:     { <span class="json-key">"value"</span>: <span class="json-num">0.884</span>, <span class="json-key">"goal_met"</span>: <span class="json-null">null</span>,  <span class="json-key">"delta_from_prev"</span>: <span class="json-num">+0.009</span> },
+    <span class="json-key">"brier_score"</span>:  { <span class="json-key">"value"</span>: <span class="json-num">0.114</span>, <span class="json-key">"goal_met"</span>: <span class="json-bool">true</span>,  <span class="json-key">"delta_from_prev"</span>: <span class="json-num">-0.008</span> },
+    <span class="json-key">"ks_statistic"</span>: { <span class="json-key">"value"</span>: <span class="json-num">0.612</span>, <span class="json-key">"goal_met"</span>: <span class="json-null">null</span>,  <span class="json-key">"delta_from_prev"</span>: <span class="json-num">+0.041</span> },
+    <span class="json-key">"cumulative_gains"</span>: {
+      <span class="json-key">"top_10_pct"</span>: <span class="json-num">0.41</span>,
+      <span class="json-key">"top_20_pct"</span>: <span class="json-num">0.67</span>,
+      <span class="json-key">"top_30_pct"</span>: <span class="json-num">0.83</span>
+    },
+    <span class="json-key">"confusion_matrix"</span>: {
+      <span class="json-key">"threshold"</span>: <span class="json-num">0.50</span>,
+      <span class="json-key">"TP"</span>: <span class="json-num">412</span>, <span class="json-key">"FP"</span>: <span class="json-num">63</span>, <span class="json-key">"TN"</span>: <span class="json-num">891</span>, <span class="json-key">"FN"</span>: <span class="json-num">134</span>
+    }
+  },
+
+  <span class="json-key">"model_config"</span>: {
+    <span class="json-key">"algorithm"</span>: <span class="json-str">"GradientBoostingClassifier"</span>,
+    <span class="json-key">"hyperparameters"</span>: {
+      <span class="json-key">"n_estimators"</span>: <span class="json-num">200</span>,
+      <span class="json-key">"max_depth"</span>: <span class="json-num">4</span>,
+      <span class="json-key">"learning_rate"</span>: <span class="json-num">0.08</span>,
+      <span class="json-key">"subsample"</span>: <span class="json-num">0.85</span>,
+      <span class="json-key">"class_weight"</span>: <span class="json-str">"balanced"</span>
+    },
+    <span class="json-key">"feature_count"</span>: <span class="json-num">34</span>,
+    <span class="json-key">"training_samples"</span>: <span class="json-num">12400</span>,
+    <span class="json-key">"class_ratio"</span>: { <span class="json-key">"positive"</span>: <span class="json-num">0.11</span>, <span class="json-key">"negative"</span>: <span class="json-num">0.89</span> }
+  },
+
+  <span class="json-key">"decision_context"</span>: {
+    <span class="json-key">"llm_analysis"</span>: <span class="json-str">"ROC-AUC improved +0.023 this iteration but remains below 0.90 target. F1 on positive class (0.763) is the primary bottleneck. High FN count (134) suggests threshold should be lowered or recall-focused tuning applied. KS statistic improving — model separation is strengthening."</span>,
+    <span class="json-key">"recommended_next_action"</span>: <span class="json-str">"Lower decision threshold to 0.40 and increase n_estimators to 300. Consider SMOTE oversampling to address class imbalance impact on recall."</span>,
+    <span class="json-key">"confidence"</span>: <span class="json-str">"medium"</span>,
+    <span class="json-key">"alternative_actions"</span>: [
+      <span class="json-str">"Switch to XGBoost with scale_pos_weight tuning"</span>,
+      <span class="json-str">"Add interaction features to improve positive class signal"</span>
+    ]
+  },
+
+  <span class="json-key">"history"</span>: [
+    { <span class="json-key">"iteration"</span>: <span class="json-num">1</span>, <span class="json-key">"roc_auc"</span>: <span class="json-num">0.821</span>, <span class="json-key">"f1_positive"</span>: <span class="json-num">0.727</span>, <span class="json-key">"action"</span>: <span class="json-str">"Baseline GBC, default params"</span> },
+    { <span class="json-key">"iteration"</span>: <span class="json-num">2</span>, <span class="json-key">"roc_auc"</span>: <span class="json-num">0.844</span>, <span class="json-key">"f1_positive"</span>: <span class="json-num">0.745</span>, <span class="json-key">"action"</span>: <span class="json-str">"Tuned learning_rate to 0.08, added class_weight=balanced"</span> },
+    { <span class="json-key">"iteration"</span>: <span class="json-num">3</span>, <span class="json-key">"roc_auc"</span>: <span class="json-num">0.867</span>, <span class="json-key">"f1_positive"</span>: <span class="json-num">0.763</span>, <span class="json-key">"action"</span>: <span class="json-str">"Increased max_depth to 4, subsample to 0.85"</span> }
+  ]
+}</pre>
+                                </div>
+                            </div>
+
+                            <!-- Source attribution -->
+                            <div class="loop-source-note">
+                                <i class="fas fa-book-open"></i>
+                                Concept: <a href="https://addyosmani.com/blog/loop-engineering/" target="_blank" rel="noopener noreferrer">Loop Engineering</a> &mdash; Addy Osmani &middot; &ldquo;You shouldn't be prompting coding agents anymore. You should be designing loops that prompt your agents.&rdquo;
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
     </main>
 
     <!-- ====== FOOTER ====== -->
@@ -1677,6 +2347,34 @@
                 setTimeout(() => {
                     btnEl.classList.remove('copied');
                     btnEl.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                }, 2000);
+            });
+        }
+
+        // Loop expand/collapse
+        function toggleLoop(headerEl) {
+            const card = headerEl.closest('.loop-card');
+            card.classList.toggle('expanded');
+        }
+
+        // Loop context JSON expand/collapse (nested)
+        function toggleLoopContext(headerEl) {
+            const block = headerEl.closest('.loop-context-block');
+            block.classList.toggle('open');
+            const icon = headerEl.querySelector('.loop-expand-icon');
+            if (icon) icon.style.transform = block.classList.contains('open') ? 'rotate(180deg)' : '';
+        }
+
+        // Copy loop context JSON to clipboard
+        function copyLoopContext(btnEl, loopId) {
+            const pre = document.getElementById(loopId + '-json');
+            const text = pre ? pre.innerText : '';
+            navigator.clipboard.writeText(text).then(() => {
+                btnEl.classList.add('copied');
+                btnEl.innerHTML = '<i class="fas fa-check"></i> Copied';
+                setTimeout(() => {
+                    btnEl.classList.remove('copied');
+                    btnEl.innerHTML = '<i class="fas fa-copy"></i> Copy JSON';
                 }, 2000);
             });
         }
