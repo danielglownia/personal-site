@@ -732,6 +732,113 @@
         }
 
         /* ========================================
+           WRITING
+           ======================================== */
+        .article-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .article-card {
+            display: grid;
+            grid-template-columns: 300px minmax(0, 1fr);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .article-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 12px 40px rgba(255, 171, 64, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .article-cover {
+            overflow: hidden;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border-subtle);
+        }
+
+        .article-cover img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .article-card:hover .article-cover img {
+            transform: scale(1.04);
+        }
+
+        .article-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+            padding: 24px 28px;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-tertiary);
+        }
+
+        .article-meta i {
+            color: var(--text-secondary);
+        }
+
+        .article-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            line-height: 1.35;
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+        }
+
+        .article-card:hover .article-title {
+            color: var(--accent-amber-light);
+        }
+
+        .article-dek {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 640px) {
+            .article-card {
+                grid-template-columns: 1fr;
+            }
+
+            .article-cover {
+                border-right: none;
+                border-bottom: 1px solid var(--border-subtle);
+            }
+
+            .article-cover img {
+                height: auto;
+            }
+
+            .article-body {
+                padding: 20px 22px 24px;
+            }
+        }
+
+        /* ========================================
            SELECTION STYLE
            ======================================== */
         ::selection {
@@ -931,28 +1038,49 @@
                 <p class="section-subtitle">Articles I've published on Medium.</p>
             </div>
 
-            <a href="https://medium.com/@dglownia/your-automation-just-got-a-brain-fb607e622838" target="_blank"
-                rel="noopener noreferrer" class="pub-card fade-in fade-in-delay-1" id="article-automation-brain"
-                aria-label="Read Your Automation Just Got a Brain on Medium">
+            <div class="article-list">
+                <a href="https://medium.com/@dglownia/context-is-the-new-pre-workout-3651ba2262f3" target="_blank"
+                    rel="noopener noreferrer" class="article-card fade-in fade-in-delay-1"
+                    id="article-context-pre-workout" aria-label="Read Context Is the New Pre-Workout on Medium">
+                    <div class="article-cover">
+                        <img src="images/writing/context-is-the-new-pre-workout.jpg" alt="" width="800"
+                            height="450" loading="lazy">
+                    </div>
+                    <div class="article-body">
+                        <div class="article-meta">
+                            <span><i class="fab fa-medium"></i> Medium</span>
+                            <span class="article-meta-sep" aria-hidden="true">·</span>
+                            <time datetime="2026-11-25">Nov 25, 2026</time>
+                            <span class="article-meta-sep" aria-hidden="true">·</span>
+                            <span>9 min read</span>
+                        </div>
+                        <h3 class="article-title">Context Is the New Pre-Workout</h3>
+                        <p class="article-dek">How I give my AI coach the whole picture (workouts, food, sleep,
+                            weight, and my trainer&rsquo;s plan) so it stops guessing and starts coaching.</p>
+                    </div>
+                </a>
 
-                <div class="pub-card-meta">
-                    <span class="pub-badge">Article</span>
-                    <span class="pub-journal">Medium</span>
-                </div>
-
-                <div class="pub-title">
-                    Your Automation Just Got a Brain
-                </div>
-
-                <div class="pub-authors">
-                    By <span class="pub-author-highlight">Daniel Glownia</span>
-                </div>
-
-                <div class="pub-links">
-                    <span class="pub-link"><i class="fab fa-medium"></i> Read on Medium</span>
-                </div>
-
-            </a>
+                <a href="https://medium.com/@dglownia/your-automation-just-got-a-brain-fb607e622838" target="_blank"
+                    rel="noopener noreferrer" class="article-card fade-in fade-in-delay-2" id="article-automation-brain"
+                    aria-label="Read Your Automation Just Got a Brain on Medium">
+                    <div class="article-cover">
+                        <img src="images/writing/your-automation-just-got-a-brain.jpg" alt="" width="800"
+                            height="446" loading="lazy">
+                    </div>
+                    <div class="article-body">
+                        <div class="article-meta">
+                            <span><i class="fab fa-medium"></i> Medium</span>
+                            <span class="article-meta-sep" aria-hidden="true">·</span>
+                            <time datetime="2026-11-24">Nov 24, 2026</time>
+                            <span class="article-meta-sep" aria-hidden="true">·</span>
+                            <span>4 min read</span>
+                        </div>
+                        <h3 class="article-title">Your Automation Just Got a Brain</h3>
+                        <p class="article-dek">Scripts fetch. The LLM thinks. Git remembers. A small pattern for
+                            reports that write themselves, and a template that you can copy.</p>
+                    </div>
+                </a>
+            </div>
         </section>
 
     </main>
